@@ -3,27 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Замовлення</title>
+    <title>COOL BREEZE - Портативний охолоджувач</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; line-height: 1.6; color: #333; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        header { background: #f8f9fa; padding: 20px; text-align: center; }
+        h1 { margin: 0; color: #004a99; }
+        .price-box { font-size: 24px; color: #d32f2f; font-weight: bold; margin: 20px 0; }
+        .btn { display: inline-block; padding: 15px 30px; background: #0056b3; color: white; text-decoration: none; border-radius: 8px; cursor: pointer; border: none; font-size: 18px; }
+        .section { padding: 40px 0; border-bottom: 1px solid #eee; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
+        .modal-content { background: white; margin: 15% auto; padding: 30px; width: 90%; max-width: 400px; border-radius: 10px; text-align: center; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+    </style>
 </head>
 <body>
-    <form id="orderForm">
-        <input type="text" id="name" placeholder="Ім'я" required>
-        <input type="tel" id="phone" placeholder="Телефон" required>
-        <button type="submit">Замовити</button>
-    </form>
 
-    <script>
-        document.getElementById('orderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            let name = document.getElementById('name').value;
-            let phone = document.getElementById('phone').value;
-            let token = "8886259179:AAHa03qbeppMBbvvzBpMpKvcpt81rTZt5Ik"; // Встав сюди токен бота
-            let chat_id = "567800143"; // Встав сюди свій ID
-            let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=Ім'я: ${name}, Телефон: ${phone}`;
-            
-            fetch(url).then(() => alert("Заявка відправлена!"));
+<header>
+    <h1>COOL BREEZE</h1>
+    <p>Портативний охолоджувач 4 в 1</p>
+    <div class="price-box">499 грн <span style="text-decoration: line-through; color: gray; font-size: 18px;">799 грн</span></div>
+    <button class="btn" onclick="openModal()">Замовити зі знижкою</button>
+</header>
+
+<div class="container">
+    <section class="section">
+        <h2>Чому обирають саме його?</h2>
+        <ul>
+            <li>Охолодження за кілька хвилин</li>
+            <li>Зволоження повітря</li>
+            <li>3 режими вентиляції</li>
+            <li>Тиха робота (≤ 45 дБ)</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>Характеристики</h2>
+        <p>Потужність: 10 Вт</p>
+        <p>Резервуар: 600 мл</p>
+        <p>Живлення: USB (5V)</p>
+    </section>
+</div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <h3>Залиште заявку</h3>
+        <form id="orderForm">
+            <input type="text" id="name" placeholder="Ваше ім'я" required>
+            <input type="tel" id="phone" placeholder="Ваш телефон" required>
+            <button type="submit" class="btn">Надіслати замовлення</button>
+        </form>
+        <p onclick="closeModal()" style="color:blue; cursor:pointer; margin-top:15px;">Закрити</p>
+    </div>
+</div>
+
+<script>
+    function openModal() { document.getElementById('modal').style.display = 'block'; }
+    function closeModal() { document.getElementById('modal').style.display = 'none'; }
+
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let name = document.getElementById('name').value;
+        let phone = document.getElementById('phone').value;
+        let token = "8886259179:AAHa03qbeppMBbvvzBpMpKvcpt81rTZt5Ik"; 
+        let chat_id = "567800143";
+        let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=ЗАМОВЛЕННЯ:%0AІм'я: ${name}%0AТелефон: ${phone}`;
+        
+        fetch(url).then(() => {
+            alert("Дякуємо! Скоро ми вам зателефонуємо.");
+            closeModal();
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
 
