@@ -3,39 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COOL BREEZE - Портативний охолоджувач</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; }
-        .hero { padding: 20px; background: #f4f4f4; }
-        h1 { color: #333; }
-        .price { font-size: 24px; color: #d9534f; font-weight: bold; }
-        .btn { display: inline-block; padding: 15px 30px; background: #0056b3; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px; cursor: pointer; }
-        
-        /* Модальне вікно */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
-        .modal-content { background: white; margin: 15% auto; padding: 20px; width: 80%; border-radius: 10px; }
-    </style>
+    <title>Замовлення</title>
 </head>
 <body>
+    <form id="orderForm">
+        <input type="text" id="name" placeholder="Ім'я" required>
+        <input type="tel" id="phone" placeholder="Телефон" required>
+        <button type="submit">Замовити</button>
+    </form>
 
-<div class="hero">
-    <h1>COOL BREEZE</h1>
-    <p>Портативний охолоджувач 4 в 1</p>
-    <div class="price">499 грн</div>
-    <a class="btn" onclick="document.getElementById('modal').style.display='block'">Замовити зі знижкою</a>
-</div>
-
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <h2>Залишити заявку</h2>
-        <form action="ТВОЯ_ПОСИЛАННЯ_ДЛЯ_ФОРМИ" method="POST">
-            <input type="text" name="name" placeholder="Ім'я" required><br><br>
-            <input type="tel" name="phone" placeholder="Телефон" required><br><br>
-            <button type="submit" class="btn">Відправити</button>
-        </form>
-        <button onclick="document.getElementById('modal').style.display='none'">Закрити</button>
-    </div>
-</div>
-
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let name = document.getElementById('name').value;
+            let phone = document.getElementById('phone').value;
+            let token = "8886259179:AAHa03qbeppMBbvvzBpMpKvcpt81rTZt5Ik"; // Встав сюди токен бота
+            let chat_id = "567800143"; // Встав сюди свій ID
+            let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=Ім'я: ${name}, Телефон: ${phone}`;
+            
+            fetch(url).then(() => alert("Заявка відправлена!"));
+        });
+    </script>
 </body>
 </html>
+
