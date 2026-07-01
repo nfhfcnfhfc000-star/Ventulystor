@@ -46,7 +46,30 @@
     </section>
 </div>
 
-<div id="modal" class="modal">
+<div id="modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+    <div class="modal-content" style="background: white; margin: 15% auto; padding: 25px; width: 90%; max-width: 400px; border-radius: 20px; text-align: center; position: relative;">
+        <span onclick="closeModal()" style="position: absolute; top: 10px; right: 15px; cursor: pointer; font-size: 20px;">✕</span>
+        <h3>Замовити зі знижкою 38%</h3>
+        <p style="font-size: 14px; color: #666;">Залиште контакти — ми передзвонимо та оформимо замовлення за 5 хвилин.</p>
+        
+        <form id="orderForm" style="text-align: left;">
+            <label style="font-weight: bold;">Ваше ім'я</label>
+            <input type="text" id="name" placeholder="Наприклад, Олена" required style="width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #0056b3; border-radius: 10px;">
+            
+            <label style="font-weight: bold;">Номер телефону</label>
+            <input type="tel" id="phone" value="+380" required style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 10px; background: #f9f9f9;">
+            
+            <button type="submit" style="width: 100%; padding: 15px; background: #0056b3; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px;">🛒 Замовити зараз</button>
+        </form>
+        
+        <p style="font-size: 12px; color: #888; margin-top: 15px;">Натискаючи кнопку, ви погоджуєтесь на обробку персональних даних.</p>
+        <div style="display: flex; justify-content: space-around; border-top: 1px solid #eee; padding-top: 15px; font-size: 12px;">
+            <span>🛡️ Гарантія 12 місяців</span>
+            <span>🚚 Оплата при отриманні</span>
+        </div>
+    </div>
+</div>
+
     <div class="modal-content">
         <h3>Залиште заявку</h3>
         <form id="orderForm">
