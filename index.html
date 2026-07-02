@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -12,21 +11,21 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:Inter,sans-serif;background:linear-gradient(180deg,#f7faff,#edf5ff);color:#17233b}
 .container{max-width:1250px;margin:auto;padding:0 24px}
-.logo{text-align:center;padding:28px 0;font-size:34px;font-weight:900;color:#1c63ff;letter-spacing:2px}
+.logo{text-align:center;padding:28px 0;font-size:34px;font-weight:900;color:#1b56d8;letter-spacing:2px}
 .hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:48px;padding:20px 0 60px}
-.badge{display:inline-block;background:#e8f0ff;color:#1c63ff;padding:10px 16px;border-radius:999px;font-size:13px;font-weight:800}
+.badge{display:inline-block;background:#e8f0ff;color:#1b56d8;padding:10px 16px;border-radius:999px;font-size:13px;font-weight:800}
 h1{font-size:66px;line-height:1.03;margin:22px 0 18px}
-h1 span{color:#1c63ff}
+h1 span{color:#1b56d8}
 .desc{font-size:18px;color:#5e6b7c;line-height:1.7;max-width:520px}
 .features{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:34px 0}
 .feature{display:flex;align-items:center;background:#fff;padding:16px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.05)}
-.icon{width:48px;height:48px;border-radius:50%;background:#edf4ff;color:#1c63ff;display:flex;align-items:center;justify-content:center;font-size:22px;margin-right:14px}
+.icon{width:48px;height:48px;border-radius:50%;background:#edf4ff;color:#1b56d8;display:flex;align-items:center;justify-content:center;font-size:22px;margin-right:14px}
 .price{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
 .card{background:#fff;border-radius:18px;padding:22px;box-shadow:0 14px 30px rgba(0,0,0,.08)}
 .old{text-decoration:line-through;color:#888;font-size:28px}
-.new{font-size:56px;color:#1c63ff;font-weight:900}
+.new{font-size:56px;color:#1b56d8;font-weight:900}
 .sale{display:inline-block;margin-top:10px;background:#ffd400;padding:8px 14px;border-radius:8px;font-weight:800}
-.btn{display:inline-block;background:#1c63ff;color:#fff;text-decoration:none;padding:20px 34px;border-radius:16px;font-weight:800;box-shadow:0 16px 35px rgba(28,99,255,.28)}
+.btn{display:inline-block;background:#1b56d8;color:#fff;text-decoration:none;padding:20px 34px;border-radius:16px;font-weight:800;box-shadow:0 16px 35px rgba(28,99,255,.28)}
 .visual{position:relative}
 .visual:before{content:"";position:absolute;inset:8% 12%;background:radial-gradient(circle,#b9d8ff 0,#dfeeff 35%,transparent 70%);filter:blur(40px);z-index:0}
 .visual img{position:relative;z-index:2;width:100%;border-radius:24px;box-shadow:0 25px 55px rgba(0,0,0,.18)}
@@ -125,7 +124,7 @@ width:68px;
 
 height:68px;
 
-background:#1d63ff;
+background:#1b56d8;
 
 border-radius:50%;
 
@@ -240,7 +239,7 @@ height:34px;
 
 border-radius:50%;
 
-background:#1d63ff;
+background:#1b56d8;
 
 color:white;
 
@@ -337,7 +336,7 @@ margin-bottom:8px;
 
 .spec-item p{
 
-color:#1d63ff;
+color:#1b56d8;
 
 font-weight:700;
 
@@ -359,6 +358,8 @@ grid-template-columns:repeat(2,1fr);
 .specs h2{
 
 font-size:34px;
+text-align:center;
+margin-bottom:35px;
 
 }
 
@@ -578,7 +579,7 @@ font-size:58px;
 
 font-weight:800;
 
-color:#1d63ff;
+color:#1b56d8;
 
 line-height:1;
 
@@ -620,7 +621,7 @@ justify-content:center;
 
 padding:18px 34px;
 
-background:#1d63ff;
+background:#1b56d8;
 
 color:#fff;
 
@@ -638,7 +639,7 @@ transition:.3s;
 
 .cta-button a:hover{
 
-background:#0f52e0;
+background:#1448b8;
 
 transform:translateY(-3px);
 
@@ -783,7 +784,7 @@ transition:.3s;
 
 .close:hover{
 
-color:#1d63ff;
+color:#1b56d8;
 
 }
 
@@ -849,7 +850,7 @@ box-sizing:border-box;
 
 .form-group input:focus{
 
-border-color:#1d63ff;
+border-color:#1b56d8;
 
 }
 
@@ -859,7 +860,7 @@ width:100%;
 
 padding:16px;
 
-background:#1d63ff;
+background:#1b56d8;
 
 border:none;
 
@@ -879,7 +880,7 @@ transition:.3s;
 
 .submit-btn:hover{
 
-background:#0f52e0;
+background:#1448b8;
 
 transform:translateY(-2px);
 
@@ -944,6 +945,7 @@ text-align:center;
 }
 </style>
 </head>
+<body>
 <!-- ================= MODAL ================= -->
 
 <div id="modal" class="modal">
@@ -1017,75 +1019,9 @@ text-align:center;
     </div>
 
 </div>
-document.getElementById("orderForm").addEventListener("submit", async function(e){
 
-    e.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
 
-    const text =
-`🛒 <b>НОВЕ ЗАМОВЛЕННЯ</b>
-
-👤 <b>Ім'я:</b> ${name}
-
-📞 <b>Телефон:</b> ${phone}
-
-🕒 <b>Час:</b> ${new Date().toLocaleString('uk-UA')}
-
-💻 <b>Пристрій:</b> ${navigator.userAgent}`;
-
-    const TOKEN = "8886259179:AAHa03qbeppMBbvvzBpMpKvcpt81rTZt5Ik";
-    const CHAT_ID = "567800143";
-
-    try{
-
-        const response = await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-            body:JSON.stringify({
-
-                chat_id:CHAT_ID,
-
-                text:text,
-
-                parse_mode:"HTML"
-
-            })
-
-        });
-
-        if(response.ok){
-
-            alert("✅ Дякуємо! Заявку успішно відправлено.");
-
-            closeModal();
-
-            this.reset();
-
-            document.getElementById("phone").value="+380";
-
-        }else{
-
-            alert("❌ Помилка відправки.");
-
-        }
-
-    }catch(err){
-
-        alert("❌ Не вдалося підключитися до Telegram.");
-
-        console.error(err);
-
-    }
-
-});
-<body>
 <div class="container">
 <div class="logo">❄ COOL BREEZE</div>
 
@@ -1108,7 +1044,7 @@ document.getElementById("orderForm").addEventListener("submit", async function(e
 <div class="new">499 грн</div>
 <div class="sale">ЗНИЖКА 38%</div>
 </div>
-<a class="btn" href="javascript:void(0)" class="btn" onclick="openModal()">Замовити зараз</a>
+<a href="javascript:void(0)" class="btn" onclick="openModal()">Замовити зараз</a>
 </div>
 
 </div>
@@ -1416,6 +1352,35 @@ document.getElementById("orderForm").addEventListener("submit", async function(e
 
 </section>
 
+
+
+<script>
+function openModal(){modal.classList.add('active');document.body.style.overflow='hidden';}
+function closeModal(){modal.classList.remove('active');document.body.style.overflow='';}
+const modal=document.getElementById('modal');
+window.onclick=e=>{if(e.target===modal)closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+document.getElementById('orderForm').addEventListener('submit',async function(e){
+e.preventDefault();
+const name=name=document.getElementById('name').value.trim();
+const phone=document.getElementById('phone').value.trim();
+const TOKEN='8886259179:AAHa03qbeppMBbvvzBpMpKvcpt81rTZt5Ik';
+const CHAT_ID='567800143';
+const msg=`🛒 <b>НОВЕ ЗАМОВЛЕННЯ</b>
+
+👤 <b>Ім'я:</b> ${name}
+📞 <b>Телефон:</b> ${phone}`;
+try{
+ const r=await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{
+ method:'POST',
+ headers:{'Content-Type':'application/json'},
+ body:JSON.stringify({chat_id:CHAT_ID,text:msg,parse_mode:'HTML'})
+ });
+ if(r.ok){alert('Дякуємо!');closeModal();this.reset();document.getElementById('phone').value='+380';}
+ else alert('Помилка відправки');
+}catch(err){alert('Помилка мережі');console.error(err);}
+});
+</script>
 
 </body>
 </html>
