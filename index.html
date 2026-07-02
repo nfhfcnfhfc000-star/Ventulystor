@@ -1376,10 +1376,19 @@ try{
  headers:{'Content-Type':'application/json'},
  body:JSON.stringify({chat_id:CHAT_ID,text:msg,parse_mode:'HTML'})
  });
- if(r.ok){alert('Дякуємо!');closeModal();this.reset();document.getElementById('phone').value='+380';}
- else alert('Помилка відправки');
-}catch(err){alert('Помилка мережі');console.error(err);}
-});
+try {
+    const r = await fetch(...);
+
+    if (r.ok) {
+        window.location.href = "thank-you.html";
+    } else {
+        alert("Помилка відправки");
+    }
+
+} catch (err) {
+    alert("Помилка мережі");
+    console.error(err);
+}
 </script>
 
 </body>
