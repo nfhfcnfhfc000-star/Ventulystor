@@ -1,148 +1,1416 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COOL BREEZE - Портативний охолоджувач</title>
-    <style>
-        * { box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; line-height: 1.6; color: #333; }
-        .container { max-width: 800px; margin: auto; padding: 20px; }
-        header { background: #f8f9fa; padding: 20px; text-align: center; }
-        h1 { margin: 0; color: #004a99; }
-        .price-box { font-size: 24px; color: #d32f2f; font-weight: bold; margin: 20px 0; }
-        .btn { display: inline-block; padding: 15px 30px; background: #0056b3; color: white; text-decoration: none; border-radius: 8px; cursor: pointer; border: none; font-size: 18px; }
-        .section { padding: 40px 0; border-bottom: 1px solid #eee; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
-        .modal-content { background: white; margin: 15% auto; padding: 30px; width: 90%; max-width: 400px; border-radius: 10px; text-align: center; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cool Breeze</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;background:linear-gradient(180deg,#f7faff,#edf5ff);color:#17233b}
+.container{max-width:1250px;margin:auto;padding:0 24px}
+.logo{text-align:center;padding:28px 0;font-size:34px;font-weight:900;color:#1c63ff;letter-spacing:2px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:48px;padding:20px 0 60px}
+.badge{display:inline-block;background:#e8f0ff;color:#1c63ff;padding:10px 16px;border-radius:999px;font-size:13px;font-weight:800}
+h1{font-size:66px;line-height:1.03;margin:22px 0 18px}
+h1 span{color:#1c63ff}
+.desc{font-size:18px;color:#5e6b7c;line-height:1.7;max-width:520px}
+.features{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:34px 0}
+.feature{display:flex;align-items:center;background:#fff;padding:16px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.05)}
+.icon{width:48px;height:48px;border-radius:50%;background:#edf4ff;color:#1c63ff;display:flex;align-items:center;justify-content:center;font-size:22px;margin-right:14px}
+.price{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.card{background:#fff;border-radius:18px;padding:22px;box-shadow:0 14px 30px rgba(0,0,0,.08)}
+.old{text-decoration:line-through;color:#888;font-size:28px}
+.new{font-size:56px;color:#1c63ff;font-weight:900}
+.sale{display:inline-block;margin-top:10px;background:#ffd400;padding:8px 14px;border-radius:8px;font-weight:800}
+.btn{display:inline-block;background:#1c63ff;color:#fff;text-decoration:none;padding:20px 34px;border-radius:16px;font-weight:800;box-shadow:0 16px 35px rgba(28,99,255,.28)}
+.visual{position:relative}
+.visual:before{content:"";position:absolute;inset:8% 12%;background:radial-gradient(circle,#b9d8ff 0,#dfeeff 35%,transparent 70%);filter:blur(40px);z-index:0}
+.visual img{position:relative;z-index:2;width:100%;border-radius:24px;box-shadow:0 25px 55px rgba(0,0,0,.18)}
+.bottom{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:10px 0 60px}
+.item{background:#fff;border-radius:16px;padding:18px;text-align:center;box-shadow:0 8px 18px rgba(0,0,0,.05)}
+.item b{display:block;margin:8px 0 4px}
+.item small{color:#687588}
+@media(max-width:900px){
+.hero{grid-template-columns:1fr}
+.visual{order:-1}
+h1{font-size:42px}
+.features,.bottom{grid-template-columns:1fr}
+.price{flex-direction:column;align-items:stretch}
+.btn{text-align:center}
+.logo{font-size:26px}
+}
+/* =============================== */
+
+.comfort{
+
+padding:40px 0 70px;
+
+}
+
+.section-title{
+
+text-align:center;
+
+font-size:42px;
+
+font-weight:800;
+
+margin-bottom:40px;
+
+color:#17233b;
+
+}
+
+.comfort-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:25px;
+
+}
+
+.comfort-card{
+
+background:#fff;
+
+border-radius:18px;
+
+overflow:hidden;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+transition:.35s;
+
+}
+
+.comfort-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+}
+
+.comfort-card img{
+
+width:100%;
+
+display:block;
+
+}
+
+.comfort-content{
+
+padding:28px;
+
+position:relative;
+
+}
+
+.circle{
+
+position:absolute;
+
+left:25px;
+
+top:-34px;
+
+width:68px;
+
+height:68px;
+
+background:#1d63ff;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:28px;
+
+color:#fff;
+
+border:6px solid #fff;
+
+}
+
+.comfort-content h3{
+
+margin-top:25px;
+
+font-size:32px;
+
+font-weight:800;
+
+margin-bottom:10px;
+
+}
+
+.comfort-content p{
+
+font-size:18px;
+
+color:#6b7280;
+
+line-height:1.6;
+
+}
+
+@media(max-width:900px){
+
+.comfort-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.section-title{
+
+font-size:34px;
+
+}
+
+.comfort-content h3{
+
+font-size:26px;
+
+}
+
+}
+.details{
+
+padding:80px 0 50px;
+
+}
+
+.details h2{
+
+font-size:42px;
+font-weight:800;
+margin-bottom:45px;
+
+}
+
+.details-list{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+gap:22px;
+
+}
+
+.detail-item{
+
+display:flex;
+gap:18px;
+
+padding:24px;
+
+background:#fff;
+
+border-radius:18px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+transition:.3s;
+
+}
+
+.detail-item:hover{
+
+transform:translateY(-4px);
+
+}
+
+.check{
+
+width:34px;
+height:34px;
+
+border-radius:50%;
+
+background:#1d63ff;
+
+color:white;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+font-weight:bold;
+
+flex-shrink:0;
+
+}
+
+.detail-item h4{
+
+font-size:21px;
+
+margin-bottom:8px;
+
+}
+
+.detail-item p{
+
+color:#6b7280;
+
+line-height:1.6;
+
+}
+
+/*====================*/
+
+.specs{
+
+padding:50px 0 90px;
+
+}
+
+.specs h2{
+
+font-size:42px;
+
+margin-bottom:35px;
+
+}
+
+.spec-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:18px;
+
+}
+
+.spec-item{
+
+display:flex;
+
+gap:18px;
+
+padding:22px;
+
+background:white;
+
+border-radius:18px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+transition:.3s;
+
+}
+
+.spec-item:hover{
+
+transform:translateY(-5px);
+
+}
+
+.spec-item span{
+
+font-size:34px;
+
+}
+
+.spec-item b{
+
+display:block;
+
+margin-bottom:8px;
+
+}
+
+.spec-item p{
+
+color:#1d63ff;
+
+font-weight:700;
+
+}
+
+@media(max-width:900px){
+
+.spec-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:600px){
+
+.details h2,
+.specs h2{
+
+font-size:34px;
+
+}
+
+.spec-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+/*========================
+        REVIEWS
+=========================*/
+
+.reviews{
+
+padding:70px 0;
+
+}
+
+.reviews-title{
+
+text-align:center;
+
+font-size:42px;
+
+font-weight:800;
+
+margin-bottom:45px;
+
+color:#17233b;
+
+letter-spacing:1px;
+
+}
+
+.reviews-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:28px;
+
+}
+
+.review-card{
+
+background:#fff;
+
+border-radius:18px;
+
+padding:28px;
+
+box-shadow:0 8px 22px rgba(0,0,0,.06);
+
+border:1px solid #e9eef8;
+
+transition:.3s;
+
+}
+
+.review-card:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 18px 35px rgba(0,0,0,.12);
+
+}
+
+.stars{
+
+color:#FDBB2D;
+
+font-size:20px;
+
+letter-spacing:3px;
+
+margin-bottom:18px;
+
+}
+
+.review-card p{
+
+font-size:17px;
+
+line-height:1.7;
+
+color:#444;
+
+margin-bottom:24px;
+
+min-height:95px;
+
+}
+
+.review-card strong{
+
+font-size:17px;
+
+color:#111827;
+
+}
+
+.review-card span{
+
+color:#2563eb;
+
+font-weight:600;
+
+}
+
+/*========== Mobile ==========*/
+
+@media(max-width:900px){
+
+.reviews-grid{
+
+grid-template-columns:1fr;
+
+gap:20px;
+
+}
+
+.review-card{
+
+padding:24px;
+
+}
+
+.review-card p{
+
+min-height:auto;
+
+}
+
+.reviews-title{
+
+font-size:32px;
+
+margin-bottom:30px;
+
+}
+
+}
+/*==========================
+            CTA
+===========================*/
+
+.cta{
+
+margin:80px 0;
+
+padding:35px 45px;
+
+background:linear-gradient(135deg,#f8fbff,#edf5ff);
+
+border-radius:24px;
+
+display:grid;
+
+grid-template-columns:2fr auto auto;
+
+align-items:center;
+
+gap:35px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.cta h2{
+
+font-size:38px;
+
+font-weight:800;
+
+line-height:1.3;
+
+color:#17233b;
+
+}
+
+.cta h2 span{
+
+display:block;
+
+margin-top:8px;
+
+color:#2563eb;
+
+}
+
+/*================*/
+
+.cta-price{
+
+text-align:center;
+
+}
+
+.old-price{
+
+font-size:24px;
+
+color:#888;
+
+text-decoration:line-through;
+
+margin-bottom:8px;
+
+}
+
+.new-price{
+
+font-size:58px;
+
+font-weight:800;
+
+color:#1d63ff;
+
+line-height:1;
+
+}
+
+.discount{
+
+display:inline-block;
+
+margin-top:15px;
+
+background:#ffcc00;
+
+padding:10px 18px;
+
+border-radius:10px;
+
+font-weight:700;
+
+font-size:16px;
+
+}
+
+/*================*/
+
+.cta-button{
+
+text-align:center;
+
+}
+
+.cta-button a{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:18px 34px;
+
+background:#1d63ff;
+
+color:#fff;
+
+font-size:18px;
+
+font-weight:700;
+
+border-radius:14px;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.cta-button a:hover{
+
+background:#0f52e0;
+
+transform:translateY(-3px);
+
+}
+
+.cta-button small{
+
+display:block;
+
+margin-top:14px;
+
+font-size:15px;
+
+color:#6b7280;
+
+}
+
+/*================*/
+
+@media(max-width:900px){
+
+.cta{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+padding:35px 25px;
+
+gap:30px;
+
+}
+
+.cta h2{
+
+font-size:30px;
+
+}
+
+.new-price{
+
+font-size:48px;
+
+}
+
+.cta-button a{
+
+width:100%;
+
+}
+
+}
+/*==============================
+            MODAL
+==============================*/
+
+.modal{
+
+display:none;
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.55);
+
+backdrop-filter:blur(5px);
+
+justify-content:center;
+
+align-items:center;
+
+padding:20px;
+
+z-index:9999;
+
+}
+
+.modal.active{
+
+display:flex;
+
+}
+
+.modal-content{
+
+background:#fff;
+
+width:100%;
+
+max-width:460px;
+
+border-radius:22px;
+
+padding:35px;
+
+position:relative;
+
+animation:popup .35s;
+
+box-shadow:0 25px 60px rgba(0,0,0,.25);
+
+}
+
+@keyframes popup{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.close{
+
+position:absolute;
+
+right:20px;
+
+top:15px;
+
+font-size:32px;
+
+cursor:pointer;
+
+color:#666;
+
+transition:.3s;
+
+}
+
+.close:hover{
+
+color:#1d63ff;
+
+}
+
+.modal-content h2{
+
+font-size:32px;
+
+margin-bottom:15px;
+
+text-align:center;
+
+color:#17233b;
+
+}
+
+.modal-text{
+
+text-align:center;
+
+color:#666;
+
+line-height:1.6;
+
+margin-bottom:30px;
+
+}
+
+.form-group{
+
+margin-bottom:20px;
+
+}
+
+.form-group label{
+
+display:block;
+
+font-weight:700;
+
+margin-bottom:8px;
+
+}
+
+.form-group input{
+
+width:100%;
+
+padding:14px 16px;
+
+font-size:16px;
+
+border-radius:12px;
+
+border:2px solid #dbe4f5;
+
+transition:.3s;
+
+outline:none;
+
+box-sizing:border-box;
+
+}
+
+.form-group input:focus{
+
+border-color:#1d63ff;
+
+}
+
+.submit-btn{
+
+width:100%;
+
+padding:16px;
+
+background:#1d63ff;
+
+border:none;
+
+border-radius:14px;
+
+font-size:18px;
+
+font-weight:700;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.submit-btn:hover{
+
+background:#0f52e0;
+
+transform:translateY(-2px);
+
+}
+
+.modal-content small{
+
+display:block;
+
+text-align:center;
+
+margin-top:20px;
+
+color:#888;
+
+line-height:1.5;
+
+}
+
+.modal-footer{
+
+margin-top:25px;
+
+padding-top:20px;
+
+border-top:1px solid #eee;
+
+display:flex;
+
+justify-content:space-between;
+
+gap:15px;
+
+font-size:13px;
+
+color:#666;
+
+}
+
+@media(max-width:600px){
+
+.modal-content{
+
+padding:25px;
+
+}
+
+.modal-content h2{
+
+font-size:26px;
+
+}
+
+.modal-footer{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+}
+</style>
 </head>
-<body>
+<!-- ================= MODAL ================= -->
 
-    <section class="hero" style="padding: 40px 20px; background: #f8f9fa; text-align: center;">
-    <h1 style="color: #004a99; font-size: 2em; margin-bottom: 10px;">COOL BREEZE</h1>
-    <p>Портативний охолоджувач 4 в 1 — прохолода та комфорт щодня!</p>
-    
-    <img src="ChatGPT Image 29 черв. 2026 р., 12_07_38.jpg" alt="COOL BREEZE" style="width: 100%; max-width: 500px; height: auto; border-radius: 20px; margin: 20px 0;">
+<div id="modal" class="modal">
 
-    <div class="price-box" style="font-size: 28px; font-weight: bold; margin: 20px 0;">
-        <span style="text-decoration: line-through; color: gray; font-size: 20px; margin-right: 10px;">799 грн</span>
-        <span style="color: #d32f2f;">499 грн</span>
-    </div>
+    <div class="modal-content">
 
-    <button class="btn" onclick="openModal()" style="padding: 18px 40px; background: #0056b3; color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer;">Замовити зараз</button>
-</section>
+        <span class="close" onclick="closeModal()">&times;</span>
 
-<header>
-    <h1>COOL BREEZE</h1>
-    <p>Портативний охолоджувач 4 в 1</p>
-    <div class="price-box">499 грн <span style="text-decoration: line-through; color: gray; font-size: 18px;">799 грн</span></div>
-    <button class="btn" onclick="openModal()">Замовити зі знижкою</button>
-</header>
+        <h2>Замовити зі знижкою 38%</h2>
 
-<div id="modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
-    <div class="modal-content" style="background: white; margin: 15% auto; padding: 25px; width: 90%; max-width: 400px; border-radius: 20px; text-align: center; position: relative;">
-        <span onclick="closeModal()" style="position: absolute; top: 10px; right: 15px; cursor: pointer; font-size: 20px;">✕</span>
-        <h3>Замовити зі знижкою 38%</h3>
-        <p style="font-size: 14px; color: #666;">Залиште контакти — ми передзвонимо та оформимо замовлення за 5 хвилин.</p>
-        
-        <form id="orderForm" style="text-align: left;">
-            <label style="font-weight: bold;">Ваше ім'я</label>
-            <input type="text" id="name" placeholder="Наприклад, Олена" required style="width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #0056b3; border-radius: 10px;">
-            
-            <label style="font-weight: bold;">Номер телефону</label>
-            <input type="tel" id="phone" value="+380" required style="width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 10px; background: #f9f9f9;">
-            
-            <button type="submit" style="width: 100%; padding: 15px; background: #0056b3; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px;">🛒 Замовити зараз</button>
+        <p class="modal-text">
+            Залиште свої контакти — ми передзвонимо протягом 5 хвилин та оформимо ваше замовлення.
+        </p>
+
+        <form id="orderForm">
+
+            <div class="form-group">
+
+                <label>Ваше ім'я</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Наприклад, Олена"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Номер телефону</label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    value="+380"
+                    required>
+
+            </div>
+
+            <button type="submit" class="submit-btn">
+
+                🛒 Замовити зараз
+
+            </button>
+
         </form>
-        
-        <p style="font-size: 12px; color: #888; margin-top: 15px;">Натискаючи кнопку, ви погоджуєтесь на обробку персональних даних.</p>
-        <div style="display: flex; justify-content: space-around; border-top: 1px solid #eee; padding-top: 15px; font-size: 12px;">
-            <span>🛡️ Гарантія 12 місяців</span>
-            <span>🚚 Оплата при отриманні</span>
+
+        <small>
+
+            Натискаючи кнопку, ви погоджуєтесь на обробку персональних даних.
+
+        </small>
+
+        <div class="modal-footer">
+
+            <div>
+
+                🛡️ Гарантія 12 місяців
+
+            </div>
+
+            <div>
+
+                🚚 Оплата при отриманні
+
+            </div>
+
         </div>
+
     </div>
+
+</div>
+<script>
+
+function openModal(){
+
+document.getElementById("modal").classList.add("active");
+
+document.body.style.overflow="hidden";
+
+}
+
+function closeModal(){
+
+document.getElementById("modal").classList.remove("active");
+
+document.body.style.overflow="auto";
+
+}
+
+window.onclick=function(event){
+
+if(event.target==document.getElementById("modal")){
+
+closeModal();
+
+}
+
+}
+
+document.addEventListener("keydown",function(e){
+
+if(e.key==="Escape"){
+
+closeModal();
+
+}
+
+});
+
+document.getElementById("phone").addEventListener("focus",function(){
+
+if(this.value===""){
+
+this.value="+380";
+
+}
+
+});
+
+document.getElementById("orderForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Дякуємо! Ми зв'яжемося з вами найближчим часом.");
+
+closeModal();
+
+this.reset();
+
+document.getElementById("phone").value="+380";
+
+});
+
+</script>
+<body>
+<div class="container">
+<div class="logo">❄ COOL BREEZE</div>
+
+<section class="hero">
+<div>
+<div class="badge">ПОРТАТИВНИЙ ОХОЛОДЖУВАЧ 4 В 1</div>
+<h1>Персональна <span>прохолода</span><br>там, де вона<br>потрібна найбільше</h1>
+<p class="desc">Охолоджує, зволожує повітря та створює комфорт у будь-яку пору року. Компактний, тихий та економний портативний охолоджувач.</p>
+
+<div class="features">
+<div class="feature"><div class="icon">❄</div><div><b>Швидке охолодження</b><br><small>За кілька хвилин</small></div></div>
+<div class="feature"><div class="icon">💧</div><div><b>Зволоження</b><br><small>Комфортне повітря</small></div></div>
+<div class="feature"><div class="icon">🌀</div><div><b>3 режими</b><br><small>Вентиляції</small></div></div>
+<div class="feature"><div class="icon">🔇</div><div><b>Низький шум</b><br><small>Комфортний сон</small></div></div>
 </div>
 
-<script>
-    function openModal() { document.getElementById('modal').style.display = 'block'; }
-    function closeModal() { document.getElementById('modal').style.display = 'none'; }
+<div class="price">
+<div class="card">
+<div class="old">799 грн</div>
+<div class="new">499 грн</div>
+<div class="sale">ЗНИЖКА 38%</div>
+</div>
+<a class="btn" href="javascript:void(0)" class="btn" onclick="openModal()">Замовити зараз</a>
+</div>
 
-    document.getElementById('orderForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        let name = document.getElementById('name').value;
-        let phone = document.getElementById('phone').value;
-        let token = "8886259179:AAHa03qbeppMBbvvzBpMpKvcpt81rTZt5Ik"; 
-        let chat_id = "567800143";
-        let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=ЗАМОВЛЕННЯ:%0AІм'я: ${name}%0AТелефон: ${phone}`;
-        
-        fetch(url).then(() => {
-            alert("Дякуємо! Скоро ми вам зателефонуємо.");
-            closeModal();
-        });
-    });
-</script>
+</div>
 
+<div class="visual">
+<img src="coolbreeze.png" alt="Cool Breeze">
+</div>
 
-<section style="background: #f4f7f6; padding: 20px; border-radius: 15px; margin: 20px 0;">
-    <h2 style="color: #004a99;">Чому обирають саме його?</h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-        <div style="background: white; padding: 10px; border-radius: 10px;">❄️ Охолодження</div>
-        <div style="background: white; padding: 10px; border-radius: 10px;">💧 Зволоження</div>
-        <div style="background: white; padding: 10px; border-radius: 10px;">🌀 3 режими</div>
-        <div style="background: white; padding: 10px; border-radius: 10px;">🔇 Тиха робота</div>
-    </div>
 </section>
 
-<section style="padding: 20px;">
-    <h2 style="color: #004a99;">Продуманий до дрібниць</h2>
-    <ul style="text-align: left; list-style: none; padding: 0;">
-        <li>✅ Просте керування</li>
-        <li>✅ Резервуар 600 мл</li>
-        <li>✅ Компактний та легкий</li>
-        <li>✅ Стильний дизайн</li>
-    </ul>
+<section class="bottom">
+<div class="item">🛡<b>Гарантія</b><small>12 місяців</small></div>
+<div class="item">🚚<b>Доставка</b><small>По Україні</small></div>
+<div class="item">📦<b>Повернення</b><small>Легке та швидке</small></div>
+<div class="item">💳<b>Оплата</b><small>При отриманні</small></div>
+</section>
+
+<section class="comfort">
+
+    <div class="section-title">
+        Ідеальний комфорт у будь-якій ситуації
+    </div>
+
+    <div class="comfort-grid">
+
+        <div class="comfort-card">
+
+            <img src="Office.png" alt="Для роботи">
+
+            <div class="comfort-content">
+
+                <div class="circle">
+                    💻
+                </div>
+
+                <h3>Для роботи</h3>
+
+                <p>
+                    Концентрація без спеки
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="comfort-card">
+
+            <img src="Home.png" alt="Для дому">
+
+            <div class="comfort-content">
+
+                <div class="circle">
+                    🏠
+                </div>
+
+                <h3>Для дому</h3>
+
+                <p>
+                    Комфорт у кожній кімнаті
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="comfort-card">
+
+            <img src="Sleep.png" alt="Для сну">
+
+            <div class="comfort-content">
+
+                <div class="circle">
+                    🌙
+                </div>
+
+                <h3>Для сну</h3>
+
+                <p>
+                    Свіже повітря та спокійний сон
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+</div>
+
+<section class="details">
+
+    <div class="details-content">
+
+        <h2>Продуманий до дрібниць</h2>
+
+        <div class="details-list">
+
+            <div class="detail-item">
+                <div class="check">✓</div>
+                <div>
+                    <h4>Просте керування</h4>
+                    <p>Зручна панель кнопок</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="check">✓</div>
+                <div>
+                    <h4>Великий резервуар</h4>
+                    <p>Для води 600 мл</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="check">✓</div>
+                <div>
+                    <h4>Регульований напрямок</h4>
+                    <p>Потоку повітря</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="check">✓</div>
+                <div>
+                    <h4>Компактний та легкий</h4>
+                    <p>Зручно брати з собою</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="check">✓</div>
+                <div>
+                    <h4>Стильний дизайн</h4>
+                    <p>Пасує до будь-якого інтер'єру</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 </section>
 
 
-<section style="padding: 20px; text-align: left;">
-    <h2 style="color: #004a99; text-align: center;">Характеристики</h2>
-    <div style="background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 10px;">
-        <p>⚡ Потужність: 10 Вт</p>
-        <p>💧 Об'єм резервуару: 600 мл</p>
-        <p>💨 Кількість режимів: 3</p>
-        <p>🔇 Рівень шуму: ≤ 45 дБ</p>
-        <p>📏 Розміри: 21 х 16 х 26 см</p>
+<section class="specs">
+
+    <h2>Характеристики</h2>
+
+    <div class="spec-grid">
+
+        <div class="spec-item">
+            <span>⚡</span>
+            <div>
+                <b>Потужність</b>
+                <p>10 Вт</p>
+            </div>
+        </div>
+
+        <div class="spec-item">
+            <span>💧</span>
+            <div>
+                <b>Об'єм резервуара</b>
+                <p>600 мл</p>
+            </div>
+        </div>
+
+        <div class="spec-item">
+            <span>🌀</span>
+            <div>
+                <b>Режими</b>
+                <p>3</p>
+            </div>
+        </div>
+
+        <div class="spec-item">
+            <span>🔊</span>
+            <div>
+                <b>Шум</b>
+                <p>≤45 дБ</p>
+            </div>
+        </div>
+
+        <div class="spec-item">
+            <span>🔌</span>
+            <div>
+                <b>Живлення</b>
+                <p>USB (5V)</p>
+            </div>
+        </div>
+
+        <div class="spec-item">
+            <span>📐</span>
+            <div>
+                <b>Розміри</b>
+                <p>21×16×26 см</p>
+            </div>
+        </div>
+
+        <div class="spec-item">
+            <span>⚖️</span>
+            <div>
+                <b>Вага</b>
+                <p>1.2 кг</p>
+            </div>
+        </div>
+
+        <div class="spec-item">
+            <span>🎨</span>
+            <div>
+                <b>Колір</b>
+                <p>Зелений / Білий</p>
+            </div>
+        </div>
+
     </div>
+
 </section>
 
-<section style="padding: 20px; background: #f9f9f9;">
-    <h2 style="color: #004a99;">Що кажуть покупці</h2>
-    <div style="margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #ccc;">
-        <p>⭐⭐⭐⭐⭐</p>
-        <p>"Дуже задоволений! Працює тихо, зручно брати з собою."<br><strong>— Ігор, Київ</strong></p>
+<section class="reviews">
+
+    <h2 class="reviews-title">ВІДГУКИ</h2>
+
+    <div class="reviews-grid">
+
+        <div class="review-card">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                Дуже задоволений! Кімната охолоджується швидко, працює тихо,
+                зручно брати з собою.
+            </p>
+
+            <strong>Ігор, <span>Київ</span></strong>
+
+        </div>
+
+        <div class="review-card">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                Використовую на роботі — тепер концентруватися набагато легше.
+                Рекомендую!
+            </p>
+
+            <strong>Олена, <span>Львів</span></strong>
+
+        </div>
+
+        <div class="review-card">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                Ідеальний для сну. Дихається легко, не пересушує повітря.
+                Чудова річ!
+            </p>
+
+            <strong>Максим, <span>Дніпро</span></strong>
+
+        </div>
+
     </div>
-    <div style="margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #ccc;">
-        <p>⭐⭐⭐⭐⭐</p>
-        <p>"Використовую на роботі, стало набагато легше!"<br><strong>— Олена, Львів</strong></p>
-    </div>
+
 </section>
 
-<section style="padding: 40px 20px; text-align: center; background: #004a99; color: white; border-radius: 20px 20px 0 0; margin-top: 20px;">
-    <h2>Подбайте про свій комфорт</h2>
-    <p>Замовте прямо зараз зі знижкою 38%</p>
-    <div style="font-size: 24px; font-weight: bold; margin: 15px 0;">499 грн</div>
-    <button class="btn" onclick="openModal()" style="background: #d32f2f; padding: 15px 40px; border: none; border-radius: 8px; color: white; font-size: 18px; cursor: pointer;">Замовити зі знижкою</button>
-    <div style="margin-top: 20px; font-size: 14px;">
-        <p>✅ Гарантія 12 місяців</p>
-        <p>✅ Швидка доставка по Україні</p>
-        <p>✅ Оплата при отриманні</p>
+<section class="cta">
+
+    <div class="cta-left">
+
+        <h2>
+            Подбайте про свій комфорт
+            <span>замовте прямо зараз!</span>
+        </h2>
+
     </div>
+
+    <div class="cta-price">
+
+        <div class="old-price">
+            799 грн
+        </div>
+
+        <div class="new-price">
+            499 грн
+        </div>
+
+        <div class="discount">
+            ЗНИЖКА 38%
+        </div>
+
+    </div>
+
+    <div class="cta-button">
+
+        <a href="javascript:void(0)" class="btn" onclick="openModal()">
+            🛒 Замовити зараз
+        </a>
+
+        <small>Швидка доставка по Україні</small>
+
+    </div>
+
 </section>
 
-    
 
 </body>
 </html>
-
