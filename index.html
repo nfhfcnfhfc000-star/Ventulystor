@@ -1355,40 +1355,67 @@ text-align:center;
 
 
 <script>
-function openModal(){modal.classList.add('active');document.body.style.overflow='hidden';}
-function closeModal(){modal.classList.remove('active');document.body.style.overflow='';}
-const modal=document.getElementById('modal');
-window.onclick=e=>{if(e.target===modal)closeModal();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-document.getElementById('orderForm').addEventListener('submit',async function(e){
-e.preventDefault();
-const name=name=document.getElementById('name').value.trim();
-const phone=document.getElementById('phone').value.trim();
-const TOKEN='8886259179:AAHa03qbeppMBbvvzBpMpKvcpt81rTZt5Ik';
-const CHAT_ID='567800143';
-const msg=`🛒 <b>НОВЕ ЗАМОВЛЕННЯ</b>
+function openModal() {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+const modal = document.getElementById('modal');
+
+window.onclick = e => {
+    if (e.target === modal) closeModal();
+};
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+});
+
+document.getElementById('orderForm').addEventListener('submit', async function(e){
+
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    const TOKEN = 'ТУТ_ТВІЙ_НОВИЙ_TOKEN';
+    const CHAT_ID = '567800143';
+
+    const msg = `🛒 <b>НОВЕ ЗАМОВЛЕННЯ</b>
 
 👤 <b>Ім'я:</b> ${name}
 📞 <b>Телефон:</b> ${phone}`;
-try{
- const r=await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{
- method:'POST',
- headers:{'Content-Type':'application/json'},
- body:JSON.stringify({chat_id:CHAT_ID,text:msg,parse_mode:'HTML'})
- });
-try {
-    const r = await fetch(...);
 
-    if (r.ok) {
-        window.location.href = "thank-you.html";
-    } else {
-        alert("Помилка відправки");
+    try {
+
+        const r = await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: msg,
+                parse_mode: 'HTML'
+            })
+        });
+
+        if (r.ok) {
+            window.location.href = "thank-you.html";
+        } else {
+            alert("Помилка відправки");
+        }
+
+    } catch (err) {
+        alert("Помилка мережі");
+        console.error(err);
     }
 
-} catch (err) {
-    alert("Помилка мережі");
-    console.error(err);
-}
+});
 </script>
 
 </body>
