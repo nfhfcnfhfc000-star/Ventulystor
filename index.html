@@ -15,10 +15,11 @@ n.version='2.0';
 n.queue=[];
 t=b.createElement(e);
 t.async=!0;
-t.src='https://connect.facebook.net/en_US/fbevents.js';
+t.src=v;
 s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s);
-}(window, document,'script');
+}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
 
 fbq('init', '1388440933104174');
 fbq('track', 'PageView');
