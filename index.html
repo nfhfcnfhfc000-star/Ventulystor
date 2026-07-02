@@ -1017,69 +1017,74 @@ text-align:center;
     </div>
 
 </div>
-<script>
+document.getElementById("orderForm").addEventListener("submit", async function(e){
 
-function openModal(){
+    e.preventDefault();
 
-document.getElementById("modal").classList.add("active");
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
 
-document.body.style.overflow="hidden";
+    const text =
+`🛒 <b>НОВЕ ЗАМОВЛЕННЯ</b>
 
-}
+👤 <b>Ім'я:</b> ${name}
 
-function closeModal(){
+📞 <b>Телефон:</b> ${phone}
 
-document.getElementById("modal").classList.remove("active");
+🕒 <b>Час:</b> ${new Date().toLocaleString('uk-UA')}
 
-document.body.style.overflow="auto";
+💻 <b>Пристрій:</b> ${navigator.userAgent}`;
 
-}
+    const TOKEN = "8886259179:AAHa03qbeppMBbvvzBpMpKvcpt81rTZt5Ik";
+    const CHAT_ID = "567800143";
 
-window.onclick=function(event){
+    try{
 
-if(event.target==document.getElementById("modal")){
+        const response = await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{
 
-closeModal();
+            method:"POST",
 
-}
+            headers:{
+                "Content-Type":"application/json"
+            },
 
-}
+            body:JSON.stringify({
 
-document.addEventListener("keydown",function(e){
+                chat_id:CHAT_ID,
 
-if(e.key==="Escape"){
+                text:text,
 
-closeModal();
+                parse_mode:"HTML"
 
-}
+            })
+
+        });
+
+        if(response.ok){
+
+            alert("✅ Дякуємо! Заявку успішно відправлено.");
+
+            closeModal();
+
+            this.reset();
+
+            document.getElementById("phone").value="+380";
+
+        }else{
+
+            alert("❌ Помилка відправки.");
+
+        }
+
+    }catch(err){
+
+        alert("❌ Не вдалося підключитися до Telegram.");
+
+        console.error(err);
+
+    }
 
 });
-
-document.getElementById("phone").addEventListener("focus",function(){
-
-if(this.value===""){
-
-this.value="+380";
-
-}
-
-});
-
-document.getElementById("orderForm").addEventListener("submit",function(e){
-
-e.preventDefault();
-
-alert("Дякуємо! Ми зв'яжемося з вами найближчим часом.");
-
-closeModal();
-
-this.reset();
-
-document.getElementById("phone").value="+380";
-
-});
-
-</script>
 <body>
 <div class="container">
 <div class="logo">❄ COOL BREEZE</div>
